@@ -1,0 +1,14 @@
+*.log
+*.pyc
+*.tab
+out
+.idea
+.svn
+*.iml
+/moz_sql_parser.egg-info
+/build
+/dist
+/moz-sql-parser
+vendor/
+._*
+.DS_Store

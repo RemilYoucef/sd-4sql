@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queries</title>
+    {{ js_resources|indent(4)|safe }}
+    {{ css_resources|indent(4)|safe }}
+    {{ plot_script|indent(4)|safe }}
+</head>
+<body>
+    <h1 style="text-align: center; margin-bottom: 40px;">INFOLOGIC HIBERNATE QUERIES</h1>
+    <div style="display: flex; justify-content: center;">
+        {{ plot_div|indent(4)|safe }}
+    </div>
+</body>
+</html>

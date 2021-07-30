@@ -1,0 +1,2 @@
+mo-future>=3
+pyparsing==2.3.1
