@@ -1,3 +1,5 @@
+[This paper](https://hal.archives-ouvertes.fr/hal-03318172/document)
+
 - the current repository contains both the implemented code source and the data used in the experiments.
 
  └── sd-4sql
