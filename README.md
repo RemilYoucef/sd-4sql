@@ -1,37 +1,3 @@
-- the current repository contains both the implemented code source and the data used in the experiments.
+# SD-4SQL: What makes my queries slow?: Subgroup Discovery for SQL Workload Analysis
 
- └── sd-4sql
-     ├── Data
-     │    └── original-data
-     │    └── saved-data
-     │
-     └── Code
-
-
-Data : 
-- original-data repository contains the orignal data gathered from our ERP (env-features), databases (sql queries, oracle-ash) and monitoring system (alerts)
-- once queries are parsed and joined (extended) with all the remaining variables, they are stored in the saved-data repository (queries-all)
-- we provide also the data used in the experiments (RQ1-D1 : dataset-d1 | RQ1-D2 : dataset-d2 | RQ2-D3 : dataset-d3 | RQ3-D4 : dataset-d4)
-
-Code :  
-
- └── Code
-      ├── extended-pysubgroup
-      ├── extened-mozilla-parser
-      └── sd-4sql
-           └── packages
-           └── pre-processing
-           └── notebooks
-           └── interactive-sd
-           └── supplementary
-
-- the extended-pysubgroup repository contains the forked repository of the original library pysubgroup with additional metrics (support for binary target & median and t-score for numerical target)
-- the extended-mozilla-parser contains the forked repository of the original library moz-sql-parser with improvements (as discussed in the paper).
-- the repository sd-4sql contains :
-	-- the packages folder 
-	-- pre-processing : contains two notebooks to perform data preperation and data preprocessing 
-	-- notebook : contains the experiment notebooks (for each use case)
-	-- interactive-sd : contains the bokeh app to run the interactive tool 
-
-NOTES : (1) to launch the interactive tool execute the following command : bokeh serve --show interactive.py --session-token-expiration 900000 
-	(2) to install the extended pysubgroup package or the customized parser : pip install -e <path> (e.g pip install -e ../extended-pysubgroup/pysubgroup-hack)
+In this [work](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis) we adressed SQL workload analysis problem to pinpoint schema issues and improve performances.  Although DBAs can easilyidentify  queries repeatedly  causing  performance  issues, it  re-mains challenging to automatically identify subsets of queriesthat  share  some  properties  only  (a  pattern)  and  foster  at  thesame time some target measures, such as execution time. Thisperfectly  falls  to  an  instance  of  SD.  After  efficiently  parsingqueries  to  extract  important  attributes  (e.g.,  tables,  fields,predicates), we augment queries with other relevant informa-tion such as performance metrics of the DBMS, environmentfeatures,  and  anomaly  alerts  guided  by  expert  knowledge.Then,  we  define  a  suitable  pattern  language  which  constitutethe first brick of the Subgroup Discovery framework: we optedfor  a  numerical  representation  for  each  observation  in  theworkload.  We  then  integrate  a  diverse  set  of  interestingnessmeasures  whose  choice  is  made  by  the  end-user,  e.g.  one  isinterested in a set of queries whose execution time distributionis  significantly  higher  and  deviant  from  the  ”norm”.  Weprovide  exact  and  heuristic  algorithms  to  identify  subgroupsof interest. Furthermore, we integrate a visual tool that enablesthe  user  to  interact  with  the  framework  and  iteratively  learnfrom  the  obtained  results.  The  experiments  were  conductedon  an  SQL  workload  that  contains  more  than  140K  queriesrun on our production-environment servers. Through the pro-vided  results,  we  were  able  to  find  query  properties  that  arealways correlated with performance degradation (e.g., missingindexes, concurrency issues, etc.). 
