@@ -1,3 +1,16 @@
 # SD-4SQL: What makes my queries slow?: Subgroup Discovery for SQL Workload Analysis
 
-In this [work](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis) we adressed SQL workload analysis problem to pinpoint schema issues and improve performances.  Although DBAs can easilyidentify  queries repeatedly  causing  performance  issues, it  re-mains challenging to automatically identify subsets of queriesthat  share  some  properties  only  (a  pattern)  and  foster  at  thesame time some target measures, such as execution time. Thisperfectly  falls  to  an  instance  of  SD.  After  efficiently  parsingqueries  to  extract  important  attributes  (e.g.,  tables,  fields,predicates), we augment queries with other relevant informa-tion such as performance metrics of the DBMS, environmentfeatures,  and  anomaly  alerts  guided  by  expert  knowledge.Then,  we  define  a  suitable  pattern  language  which  constitutethe first brick of the Subgroup Discovery framework: we optedfor  a  numerical  representation  for  each  observation  in  theworkload.  We  then  integrate  a  diverse  set  of  interestingnessmeasures  whose  choice  is  made  by  the  end-user,  e.g.  one  isinterested in a set of queries whose execution time distributionis  significantly  higher  and  deviant  from  the  ”norm”.  Weprovide  exact  and  heuristic  algorithms  to  identify  subgroupsof interest. Furthermore, we integrate a visual tool that enablesthe  user  to  interact  with  the  framework  and  iteratively  learnfrom  the  obtained  results.  The  experiments  were  conductedon  an  SQL  workload  that  contains  more  than  140K  queriesrun on our production-environment servers. Through the pro-vided  results,  we  were  able  to  find  query  properties  that  arealways correlated with performance degradation (e.g., missingindexes, concurrency issues, etc.). 
+## INTRODUCTION & OVERVIEW
+
+In this [work](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis) we adressed SQL workload analysis problem to pinpoint schema issues and improve performances. We seek to automatically identify subsets of queries that share some properties only i.e a pattern (e.g., sql clauses and/or environment features) and foster at the same time some target measures, such as execution time or concurrency issues. To this aim we design a generic-framework rooted on a data mining approach known as Subgroup Discovery. This work has been published in the 36th IEEE/ACM International Conferenceon Automated Software Engineering (ASE). For further details, please refer to [our paper](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis).
+
+In this framework we :
+- propose a data preprocessing step to _parse_ queries but also augment them with relevant features.
+- provide heuristic and exact algorithms to identify relevant subgroups of interest w.r.t a target problem (e.g higher execution time) with a diverse set of interestingness measures.
+- integrate a visual tool to enable the user to interact iteratively with the framework.
+
+
+Our experimental study was conducted on an SQL workload containing _Hibernate_ queries run executed on our clients' servers at [INFOLOGIC](https://www.infologic-copilote.fr/) company. 
+
+## HOW TO USE IT ?
+### 1. Query parser 
