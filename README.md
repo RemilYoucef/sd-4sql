@@ -12,5 +12,7 @@ In this framework we :
 
 Our experimental study was conducted on an SQL workload containing _Hibernate_ queries run executed on our clients' servers at [INFOLOGIC](https://www.infologic-copilote.fr/) company. 
 
+![overview](Docs/Images/overviewSchemaNew.png)
+
 ## HOW TO USE IT ?
 ### 1. Query parser 
