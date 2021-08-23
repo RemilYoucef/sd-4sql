@@ -65,7 +65,7 @@ import pandas as pd
 from subgroup_discovery import sd_binary_conds
  
 queries = pd.read_csv(saved_path + 'dataset-d3.csv')
-result_wracc = sd_binary_conds(queries, dict_conds = {},_
+result_binomial = sd_binary_conds(queries, dict_conds = {},_
                                target = 'conc_disc', 
                                mesure  = 'Binomial',
                                depth  = 1,
@@ -74,10 +74,12 @@ result_wracc = sd_binary_conds(queries, dict_conds = {},_
                                algorithm = 'Beam Search', 
                                beam_width = 100,
                                features_ignore = ['concurrence'])
-res_wracc = result_wracc.to_dataframe()
-print(res_wracc[:10])
+res_binomial = result_binomial.to_dataframe()
+print(res_binamial[:6])
  ```
  
 the corresponding results are shown below :
 
 ![result](Docs/Images/result_d3.PNG)
+
+
