@@ -79,4 +79,5 @@ print(res_wracc[:10])
  ```
  
 the corresponding results are shown below :
-![result](Docs/Images/result_d3.png)
+
+![result](Docs/Images/result_d3.PNG)
