@@ -95,7 +95,7 @@ In practice, an effective SD approach needs to be iterative and interactive, to 
 
 ![interactive](Docs/Images/interactivityTool.png)
 
-## HOW TO CITE THIS PAPER AND THE DATASETS
+## HOW TO CITE THIS PAPER AND THE DATASETS ?
 
 If you are using sd-4sql  or our provided dataset for your research, please consider citing our demo paper:
         
