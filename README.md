@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 
-In this [work](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis) we adressed SQL workload analysis problem to pinpoint schema issues and improve performances. We seek to automatically identify subsets of queries that share some properties only i.e a pattern (e.g., sql clauses and/or environment features) and foster at the same time some target measures, such as execution time or concurrency issues. To this aim we design a generic-framework rooted on a data mining approach known as Subgroup Discovery. This work has been published in the 36th IEEE/ACM International Conferenceon Automated Software Engineering (ASE)(Core 2021 A*). For further details, please refer to [our paper](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis).
+In this [work](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis) we adressed SQL workload analysis problem to pinpoint schema issues and improve performances. We seek to automatically identify subsets of queries that share some properties only i.e a pattern (e.g., sql clauses and/or environment features) and foster at the same time some target measures, such as execution time or concurrency issues. To this aim we design a generic-framework rooted on a data mining approach known as Subgroup Discovery. This work has been published in the 36th IEEE/ACM International Conferenceon Automated Software Engineering (ASE). For further details, please refer to [our paper](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis).
 
 In this framework we :
 - propose a data preprocessing step to _parse_ queries but also augment them with relevant features.
@@ -15,4 +15,65 @@ Our experimental study was conducted on an SQL workload containing _Hibernate_ q
 ![overview](Docs/Images/overviewSchemaNew.png)
 
 ## HOW TO USE IT ?
-### 1. Query parser 
+### A. Parsing queries
+
+We use the readily available [Mozilla Parser](https://github.com/mozilla/moz-sql-parser) which provides only an SQL syntactic tree in XML that constitue the input of our customized parser. The syntactic tree is mined using **Depth First stratergy** to identify for each query clause its associated attributes. Moreover, we extended the Mozilla parser in two other ways: 
+- considering Hibernate queries used in our ERP as the ORM layer by adding relative keywords for Hibernate such as <tt>JOIN-FETCH</tt>.
+- handling nested queries and keeping alias (temporary table names) to differentiate between attributes having same name but which belong to different tables or clauses.
+
+First we need to install the customized parser by executing the following command:
+
+```sh
+pip install -e ./Code/extened-mozilla-parser/moz-sql-parser-hack
+```
+Here is one example:
+```python
+import os
+import sys
+from query_parser import parsing
+from moz_sql_parser import parse
+
+query = 'select count( distinct a.ik) from fr.infologic.ventes.commandesfactures.modele.CdeLig as a where a.cde.typCde = :p1 and a.typLigGenere != :p2 and a.typLigGenere != :p3 and a.art.refDefaut = :p4 and (a.cde.cliLiv = :p5 or 9596436491 in elements (a.cde.noCliContrat)) and ( a.cde.etatContrat in ( :collection0_ ) ) and ( a.etatContrat NOT in ( :collection1_ ) ) and UPPER ( a.libStd ) like UPPER( :p6 ) and a.dossierInfo.dosRes = :p7'
+
+print(parsing(query))
+```
+```
+{'tables_from': ['fr.infologic.ventes.commandesfactures.modele.cdelig'],
+ 'tables_join': [],
+ 'projections': ['fr.infologic.ventes.commandesfactures.modele.cdelig.ik'],
+ 'atts_where': ['fr.infologic.ventes.commandesfactures.modele.cdelig.cde.typcde',
+  'fr.infologic.ventes.commandesfactures.modele.cdelig.typliggenere',
+  'fr.infologic.ventes.commandesfactures.modele.cdelig.typliggenere',
+  'fr.infologic.ventes.commandesfactures.modele.cdelig.art.refdefaut',
+  'fr.infologic.ventes.commandesfactures.modele.cdelig.cde.cliliv',
+  'fr.infologic.ventes.commandesfactures.modele.cdelig.cde.noclicontrat',
+  'fr.infologic.ventes.commandesfactures.modele.cdelig.cde.etatcontrat',
+  'fr.infologic.ventes.commandesfactures.modele.cdelig.etatcontrat',
+  'fr.infologic.ventes.commandesfactures.modele.cdelig.libstd',
+  'fr.infologic.ventes.commandesfactures.modele.cdelig.dossierinfo.dosres'],
+ 'atts_groupby': [],
+ 'atts_orderby': [],
+ 'atts_having': [],
+ 'functions': ['count']}
+ ```
+ 
+ ### B. Subgroup Discovery for SQL Workload Analysis
+ 
+ We show below a simple use case (dataset d-3) considered in the paper:
+ ```python
+import pandas as pd
+from subgroup_discovery import sd_binary_conds
+ 
+queries = pd.read_csv(saved_path + 'dataset-d3.csv')
+result_wracc = sd_binary_conds(queries, dict_conds = {},_
+                               target = 'conc_disc', 
+                               mesure  = 'WRAcc',
+                               depth  = 1,
+                               threshold = 10000, 
+                               result_size = 100, 
+                               algorithm = 'Beam Search', 
+                               beam_width = 100,
+                               features_ignore = ['concurrence'])
+res_wracc = result_wracc.to_dataframe()
+print(res_wracc[:10])
+ ```
