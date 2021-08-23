@@ -89,3 +89,7 @@ As the framwork does not provide closed patterns, a preprocessing step is more t
  similarity_dendrogram(result_binomial.to_descriptions(), 20, queries)
  ```
 ![result_prepro](Docs/Images/result_d3_preprocessing.PNG)
+
+### C. Interactive tool
+
+In practice, an effective SD approach needs to be iterative and interactive, to make it possible to incorporate subjective criteria as well as human expertise. We present our basic interactive took so it can manage different data types, both for input features as well asthe target, including nominal and numerical attributes. It alsoprovides a range of interestingness measures and algorithms.
