@@ -106,7 +106,7 @@ bibtex:
     @inproceedings{remiletalASE21,
       title={"What makes my queries slow?": Subgroup Discovery for SQL workload Analysis},
       author={Remil, Youcef and Bendimerad, Anes and Mathonat, Romain and Chaleat, Philippe and Kaytoue, Mehdi},
-      booktitle={Proceedings of 36th IEEE/ACM International Conference on Automated Software Engineering (ASE) (accepted)},
+      booktitle={Proceedings of 36th IEEE/ACM International Conference on Automated Software Engineering (ASE)},
       year={2021},
       organization={IEEE}
     }
