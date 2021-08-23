@@ -88,3 +88,4 @@ As the framwork does not provide closed patterns, a preprocessing step is more t
  ```python
  similarity_dendrogram(result_binomial.to_descriptions(), 20, queries)
  ```
+![result_prepro](Docs/Images/result_d3_preprocessing.PNG)
