@@ -31,7 +31,6 @@ Here is one example:
 import os
 import sys
 from query_parser import parsing
-from moz_sql_parser import parse
 
 query = 'select count( distinct a.ik) from fr.infologic.ventes.commandesfactures.modele.CdeLig as a where a.cde.typCde = :p1 and a.typLigGenere != :p2 and a.typLigGenere != :p3 and a.art.refDefaut = :p4 and (a.cde.cliLiv = :p5 or 9596436491 in elements (a.cde.noCliContrat)) and ( a.cde.etatContrat in ( :collection0_ ) ) and ( a.etatContrat NOT in ( :collection1_ ) ) and UPPER ( a.libStd ) like UPPER( :p6 ) and a.dossierInfo.dosRes = :p7'
 
