@@ -95,3 +95,19 @@ As the framwork does not provide closed patterns, a preprocessing step is more t
 In practice, an effective SD approach needs to be iterative and interactive, to make it possible to incorporate subjective criteria as well as human expertise. We present our basic interactive took so it can manage different data types, both for input features as well asthe target, including nominal and numerical attributes. It alsoprovides a range of interestingness measures and algorithms.
 
 ![interactive](Docs/Images/interactivityTool.png)
+
+## HOW TO CITE THIS PAPER AND THE DATASETS
+
+If you are using sd-4sql  or our provided dataset for your research, please consider citing our demo paper:
+        
+    Y. Remil, A. Bendimerad, R. Mathonat, P. Chaleat, and M. Kaytoue, "what makes my queries slow?": Subgroup discovery for sql workload analysis. in Proceedings of 36th IEEE/ACM  International Conference on Automated Software Engineering (ASE). IEEE, 2021.
+    
+bibtex:
+  
+    @inproceedings{remiletalASE21,
+      title={"What makes my queries slow?": Subgroup Discovery for SQL workload Analysis},
+      author={Remil, Youcef and Bendimerad, Anes and Mathonat, Romain and Chaleat, Philippe and Kaytoue, Mehdi},
+      booktitle={Proceedings of 36th IEEE/ACM International Conference on Automated Software Engineering (ASE) (accepted)},
+      year={2021},
+      organization={IEEE}
+    }
