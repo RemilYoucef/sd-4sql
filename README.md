@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 
-In this [work](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis) we adressed SQL workload analysis problem to pinpoint schema issues and improve performances. We seek to automatically identify subsets of queries that share some properties only i.e a pattern (e.g., sql clauses and/or environment features) and foster at the same time some target measures, such as execution time or concurrency issues. To this aim we design a generic-framework rooted on a data mining approach known as Subgroup Discovery. This work has been published in the 36th IEEE/ACM International Conferenceon Automated Software Engineering (ASE). For further details, please refer to [our paper](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis).
+In this [work](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis) we adressed SQL workload analysis problem to pinpoint schema issues and improve performances. We seek to automatically identify subsets of queries that share some properties only i.e a pattern (e.g., sql clauses and/or environment features) and foster at the same time some target measures, such as execution time or concurrency issues. To this aim, we design a generic-framework rooted on a data mining approach known as Subgroup Discovery. This work has been published in the 36th IEEE/ACM International Conferenceon Automated Software Engineering (ASE). For further details, please refer to [our paper](https://www.researchgate.net/publication/353776691_What_makes_my_queries_slow_Subgroup_Discovery_for_SQL_Workload_Analysis).
 
 In this framework we :
 - propose a data preprocessing step to _parse_ queries but also augment them with relevant features.
@@ -10,7 +10,7 @@ In this framework we :
 - integrate a visual tool to enable the user to interact iteratively with the framework.
 
 
-Our experimental study was conducted on an SQL workload containing _Hibernate_ queries run executed on our clients' servers at [INFOLOGIC](https://www.infologic-copilote.fr/) company. 
+Our experimental study was conducted on an SQL workload containing _Hibernate_ queries run on our clients' servers at [INFOLOGIC](https://www.infologic-copilote.fr/) company. 
 
 ![overview](Docs/Images/overviewSchemaNew.png)
 
@@ -19,7 +19,7 @@ Our experimental study was conducted on an SQL workload containing _Hibernate_ q
 
 We use the readily available [Mozilla Parser](https://github.com/mozilla/moz-sql-parser) which provides only an SQL syntactic tree in XML that constitue the input of our customized parser. The syntactic tree is mined using **Depth First stratergy** to identify for each query clause its associated attributes. Moreover, we extended the Mozilla parser in two other ways: 
 - considering Hibernate queries used in our ERP as the ORM layer by adding relative keywords for Hibernate such as <tt>JOIN-FETCH</tt>.
-- handling nested queries and keeping alias (temporary table names) to differentiate between attributes having same name but which belong to different tables or clauses.
+- handling nested queries and keeping alias (temporary table names) to differentiate between attributes having the same name but belong to different tables or clauses.
 
 First we need to install the customized parser by executing the following command:
 
@@ -97,7 +97,7 @@ In practice, an effective SD approach needs to be iterative and interactive, to 
 
 ## HOW TO CITE THIS PAPER AND THE DATASETS ?
 
-If you are using sd-4sql  or our provided dataset for your research, please consider citing our demo paper:
+If you are using sd-4sql or our provided dataset for your research, please consider citing our paper:
         
     Y. Remil, A. Bendimerad, R. Mathonat, P. Chaleat, and M. Kaytoue, "what makes my queries slow?": Subgroup discovery for sql workload analysis. in Proceedings of 36th IEEE/ACM  International Conference on Automated Software Engineering (ASE). IEEE, 2021.
     
