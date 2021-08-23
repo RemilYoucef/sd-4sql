@@ -67,7 +67,7 @@ from subgroup_discovery import sd_binary_conds
 queries = pd.read_csv(saved_path + 'dataset-d3.csv')
 result_wracc = sd_binary_conds(queries, dict_conds = {},_
                                target = 'conc_disc', 
-                               mesure  = 'WRAcc',
+                               mesure  = 'Binomial',
                                depth  = 1,
                                threshold = 10000, 
                                result_size = 100, 
