@@ -77,3 +77,6 @@ result_wracc = sd_binary_conds(queries, dict_conds = {},_
 res_wracc = result_wracc.to_dataframe()
 print(res_wracc[:10])
  ```
+ 
+the corresponding results are shown below :
+![result](Docs/Images/result_d3.png)
