@@ -47,8 +47,7 @@ sql_reserved_words = [
     "USING",
     "WITH",
     "WHEN",
-    "WHERE",
-    "
+    "WHERE"
 ]
 
 reserved_keywords = []

@@ -18,6 +18,7 @@ from pyparsing import ParseException, ParseResults
 
 from moz_sql_parser.debugs import all_exceptions
 from moz_sql_parser.sql_parser import SQLParser
+from moz_sql_parser.json_converter import *
 
 
 def __deploy__():
@@ -52,6 +53,29 @@ def parse(sql):
                 ]
                 raise ParseException(sql, e.loc, "Expecting one of (" + (", ".join(expecting)) + ")")
             raise
+
+
+def parse_json(sql):
+    
+    query = sql.lower()
+    
+    try : 
+        query_parsed = {}
+        query_reg = parse(query) 
+        alias = get_tables(query_reg,{})[1]
+        query_parsed['tables_from']  =  get_tables_fj(query_reg, {})[0]
+        query_parsed['tables_join']  =  get_tables_fj(query_reg, {})[1]
+        query_parsed['projections']  =  get_projections(query_reg, alias)
+        query_parsed['attributes_where']   =  get_atts_where(query_reg, alias)
+        query_parsed['attributes_groupby'] =  get_atts_group_by(query_reg, alias)
+        query_parsed['attributes_orderby'] =  get_atts_order_by(query_reg, alias)
+        query_parsed['attributes_having']  =  get_atts_having(query_reg, alias)
+        query_parsed['functions']    =  get_functions(query_reg)
+        return query_parsed
+
+    except :
+        print(query)
+        return {}
 
 
 def format(json, **kwargs):
