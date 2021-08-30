@@ -82,7 +82,7 @@ the corresponding results are shown below :
 ![result](Docs/Images/result_d3.PNG)
 
 
-As the framwork does not provide closed patterns, a preprocessing step is more than needed to group patterns having the same extent. We used hierarchical clustering based on the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index). Here is an example that shows how to perform clustering on the resulting patterns :
+As the framwork does not provide closed patterns, a post-processing step is more than needed to group patterns having the same extent. We used hierarchical clustering based on the [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index). Here is an example that shows how to perform clustering on the resulting patterns :
  
  ```python
  similarity_dendrogram(result_binomial.to_descriptions(), 20, queries)
