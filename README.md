@@ -1,4 +1,4 @@
-# SD-4SQL: What makes my queries slow?: Subgroup Discovery for SQL Workload Analysis
+# SD-4SQL: What makes my queries slow?: Subgroup Discovery for SQL Workload Analysis (International Conference on Automated Software Engineering ASE, Core A*)
 
 ## Overview
 
